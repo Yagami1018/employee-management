@@ -1,4 +1,4 @@
-package cu.uho.mtss;
+package cu.uho.workers;
 
 public class Launcher {
     public static void main(String[] args) {
