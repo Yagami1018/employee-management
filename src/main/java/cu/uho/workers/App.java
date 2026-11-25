@@ -3,6 +3,7 @@ package cu.uho.workers;
 import java.io.IOException;
 
 import cu.uho.workers.controller.MainController;
+import cu.uho.workers.i18n.I18n;
 import cu.uho.workers.service.WorkerService;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         var scene = new Scene(MainController.createView(new WorkerService()));
         stage.setScene(scene);
-        stage.setTitle("app.title");
+        stage.setTitle(I18n.get("app.title"));
         stage.show();
     }
 

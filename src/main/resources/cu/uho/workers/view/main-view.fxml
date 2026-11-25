@@ -2,7 +2,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.uho.workers.controller.MainController">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
          <tabs>
@@ -31,7 +31,7 @@
                               </HBox>
                            </bottom>
                            <center>
-                              <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="workerTV" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                  <columns>
                                     <TableColumn prefWidth="129.0" text="%table.col.id" />
                                     <TableColumn prefWidth="183.0" text="%table.col.name" />
@@ -52,7 +52,7 @@
                                     <Label text="%label.category" />
                                     <ComboBox prefWidth="150.0" />
                                     <Label text="%label.search" />
-                                    <TextField promptText="%textfield.placeholder" HBox.hgrow="ALWAYS" />
+                                    <TextField promptText="%textfield.search.placeholder" HBox.hgrow="ALWAYS" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" top="10.0" />
@@ -67,7 +67,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Queries">
+            <Tab text="%tab.queries">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
@@ -83,7 +83,7 @@
                   <MenuItem mnemonicParsing="false" text="%menu.file.save" />
                   <MenuItem mnemonicParsing="false" text="%menu.file.load" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="%menu.file.close" />
+                  <MenuItem mnemonicParsing="false" text="%menu.file.close" onAction="#onClose" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="%menu.options">
@@ -96,8 +96,8 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="%menu.options.lang">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="%menu.options.lang.en" />
-                        <MenuItem mnemonicParsing="false" text="%menu.options.lang.es" />
+                        <MenuItem mnemonicParsing="false" text="%menu.options.lang.en" onAction="#onEnglish" />
+                        <MenuItem mnemonicParsing="false" text="%menu.options.lang.es" onAction="#onSpanish" />
                      </items>
                   </Menu>
                </items>
