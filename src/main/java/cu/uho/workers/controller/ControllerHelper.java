@@ -13,7 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class ControllerHelper {
+public final class ControllerHelper {
     private ControllerHelper() {
     }
 
@@ -38,19 +38,32 @@ public class ControllerHelper {
 
     public static class Dialogs {
         private static Alert a;
+        private static ButtonType yes, no;
+
+        private Dialogs() {
+        }
 
         public static void show(AlertType type, String msg) {
-            a = new Alert(type, msg);
-            a.setHeaderText(null);
-            a.showAndWait();
+            createAlert(type, msg).showAndWait();
         }
 
         public static boolean confirm(String prompt) {
-            ButtonType yes = new ButtonType(I18n.get("button.yes"), ButtonData.YES);
-            ButtonType no = new ButtonType(I18n.get("button.no"), ButtonData.NO);
-            a = new Alert(AlertType.CONFIRMATION, prompt, yes, no);
+            yes = new ButtonType(I18n.get("button.yes"), ButtonData.YES);
+            no = new ButtonType(I18n.get("button.no"), ButtonData.NO);
+            return createAlert(AlertType.CONFIRMATION, prompt, yes, no).showAndWait().filter(b -> b == yes).isPresent();
+        }
+
+        public static Alert createAlert(AlertType type, String msg) {
+            a = new Alert(type, msg);
+            a.setTitle(null);
             a.setHeaderText(null);
-            return a.showAndWait().filter(sel -> sel == yes).isPresent();
+            return a;
+        }
+
+        public static Alert createAlert(AlertType type, String msg, ButtonType btn1, ButtonType btn2) {
+            createAlert(type, msg);
+            a.getButtonTypes().setAll(btn1, btn2);
+            return a;
         }
     }
 }

@@ -35,13 +35,15 @@ public class MainController {
 
     @FXML
     private void onSpanish() {
-        if(ControllerHelper.switchLanguage(I18n.SPANISH)) {
+        if (ControllerHelper.switchLanguage(I18n.SPANISH)) {
             ControllerHelper.restartWindow(service, workerTV);
         }
     }
 
     @FXML
     private void onClose() {
-        Platform.exit();
+        if (ControllerHelper.Dialogs.confirm(I18n.get("confirm.close"))) {
+            Platform.exit();
+        }
     }
 }
