@@ -4,14 +4,24 @@ public class InvalidWorkerDataException extends IllegalArgumentException {
 
     private static final long serialVersionUID = 0L;
     private ValidationError error;
+    private int idLength;
 
-    public InvalidWorkerDataException(ValidationError typeError) {
-        super(typeError.name());
-        this.error = typeError;
+    public InvalidWorkerDataException(ValidationError error) {
+        super(error.name());
+        this.error = error;
+    }
+
+    public InvalidWorkerDataException(ValidationError error, int idLength) {
+        this(error);
+        this.idLength = idLength;
     }
 
     public ValidationError getError() {
         return error;
+    }
+
+    public int getIdLength() {
+        return idLength;
     }
 
 }
