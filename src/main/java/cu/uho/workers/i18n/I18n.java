@@ -24,7 +24,7 @@ public final class I18n {
 	/**
 	 * Change internationalization locale and reset resource bundle according to the
 	 * new locale.
-	 * 
+	 *
 	 * @param locale
 	 *                   to be set
 	 */
@@ -43,20 +43,20 @@ public final class I18n {
 
 	/**
 	 * Get string value from the key-value pairs of the bundle.
-	 * 
+	 *
 	 * @param key
 	 *                key for accessing a value in the assigned
 	 *                messages.properties.
-	 * @return the value that matches the key param.
+	 * @return the value that matches the key parameter.
 	 */
 	public static String get(String key) {
 		return bundle.getString(key);
 	}
 
 	/**
-	 * Method for especific key-value pairs in the bundle that consists in values
+	 * Method for specific key-value pairs in the bundle that consists in values
 	 * with formatting involved.
-	 * 
+	 *
 	 * @param key
 	 *                 the key for accessing a value in the assigned
 	 *                 messages.properties.
@@ -69,11 +69,12 @@ public final class I18n {
 	}
 
 	/**
-	 * Another form of getString for accesing enums string values
-	 * 
+	 * Another form of getString for acceding to enumerated string values
+	 *
 	 * @param enumValue
-	 *                      the enum string externalized at messages.properties
-	 * @return the value of the enum key-value pair
+	 *                      the enumeration string externalized at
+	 *                      messages.properties
+	 * @return the name of the enumerated element in the key-value pair
 	 */
 	public static String label(Enum<?> enumValue) {
 		return get("enum." + enumValue.getDeclaringClass().getSimpleName() + "." + enumValue.name());
@@ -87,7 +88,7 @@ public final class I18n {
 	 *                     the length of the invalid id.
 	 *
 	 */
-	public static String label(Enum<?> enumValue, int idLength) {
+	public static String label(int idLength) {
 		return format("enum.ValidationError.INVALID_ID_FORMAT", idLength);
 	}
 

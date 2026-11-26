@@ -22,10 +22,10 @@ import javafx.scene.control.TextField;
 public class MainController {
 
 	/**
-	 * CategoryFilter record used at the categoryFilterCB as a wrapper for
-	 * categories enum, if the wrapped category is null then the value of
-	 * categoryFilter is all, using overrided toString for this behavior.
-	 * 
+	 * CategoryFilter record used at the categoryFilterCB as a wrapper for enumerated
+	 * categories, if the wrapped category is null then the value of
+	 * categoryFilter is all, using toString for this behavior.
+	 *
 	 * @param category
 	 *                     the category to be wrapped, if its null then the bundle
 	 *                     will provide a name.
@@ -58,9 +58,9 @@ public class MainController {
 
 	/**
 	 * Method to initialize filters used at the Workers TableView,
-	 * first add a null category to the combobox represent that workers from all
-	 * categories matches, and next put all categories in the combobox,
-	 * wraps the observableArrayList into the FilteredList, then wraps again into a
+	 * first add a null category to the Combo Box represent that workers from all
+	 * categories matches, and next put all categories in the Combo Box,
+	 * wraps the observable ArrayList into the FilteredList, then wraps again into a
 	 * SortedList, which uses the Comparator provided with each column at
 	 * the table View.
 	 */
@@ -82,7 +82,7 @@ public class MainController {
 
 	/**
 	 * Method that applies filter to workers against category selection from the
-	 * category filter combobox and text entered in the search text field.
+	 * category filter Combo Box and text entered in the search text field.
 	 */
 	private void applyFilter() {
 		CategoryFilter selected = categoryFilterCB.getSelectionModel().getSelectedItem();
@@ -100,13 +100,13 @@ public class MainController {
 	/**
 	 * This method creates the scene graph from the view and and returns it to be
 	 * used for the Stage (Window),
-	 * 
+	 *
 	 * @param service
 	 *                    the worker service that provides the workers list and
-	 *                    methods to query data from it, ensuring that bussiness
+	 *                    methods to query data from it, ensuring that business
 	 *                    logic stays untangled from the controller.
 	 * @return the root node (Parent) containing a hierarchy of children nodes,
-	 *         similar to a DOM (Document Object Model) of a html.
+	 *         similar to a DOM (Document Object Model) of a HTML.
 	 * @throws IOException
 	 */
 	public static Parent createView(WorkerService service) throws IOException {
