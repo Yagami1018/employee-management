@@ -62,19 +62,31 @@ public final class I18n {
 	 *                 messages.properties.
 	 * @param args
 	 *                 the objects to be formatted.
-	 * @return
+	 * @return the value of the key-value pair
 	 */
 	public static String format(String key, Object... args) {
 		return new MessageFormat(get(key), locale).format(args);
 	}
 
 	/**
+	 * Another form of getString for accesing enums string values
 	 * 
+	 * @param enumValue
+	 *                      the enum string externalized at messages.properties
+	 * @return the value of the enum key-value pair
 	 */
 	public static String label(Enum<?> enumValue) {
 		return get("enum." + enumValue.getDeclaringClass().getSimpleName() + "." + enumValue.name());
 	}
 
+	/**
+	 * This overloaded method handles the case of invalid id format, showing to the
+	 * user the length of their invalid input
+	 *
+	 * @param idLength
+	 *                     the length of the invalid id.
+	 *
+	 */
 	public static String label(Enum<?> enumValue, int idLength) {
 		return format("enum.ValidationError.INVALID_ID_FORMAT", idLength);
 	}
