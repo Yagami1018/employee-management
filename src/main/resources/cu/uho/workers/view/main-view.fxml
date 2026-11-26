@@ -50,9 +50,9 @@
 										<HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
 											<children>
 												<Label text="%label.category" />
-												<ComboBox prefWidth="150.0" />
+												<ComboBox fx:id="categoryFilterCB" prefWidth="150.0" />
 												<Label text="%label.search" />
-												<TextField promptText="%textfield.search.placeholder" HBox.hgrow="ALWAYS" />
+												<TextField fx:id="searchTF"	promptText="%textfield.search.placeholder" HBox.hgrow="ALWAYS" />
 											</children>
 											<padding>
 												<Insets bottom="10.0" top="10.0" />
