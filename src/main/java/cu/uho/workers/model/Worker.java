@@ -15,18 +15,27 @@ import java.util.Objects;
 public abstract sealed class Worker implements Serializable permits Laborer, Technician, Manager {
 
     private static final long serialVersionUID = 0L;
-    private String id;
-    private String name;
-    private Sex sex;
-    private String address;
-    private Category category;
+    private final String id;
+    private final String name;
+    private final Sex sex;
+    private final String address;
     private final List<Double> evaluations = new ArrayList<>();
 
     public Worker(String id, String name, Sex sex, String address) {
+        if (id == null || !id.matches("\\d{11}")) {
+            throw new InvalidWorkerDataException(ValidationError.INVALID_ID_FORMAT);
+        }
+        if (name == null || name.isBlank()) {
+            throw new InvalidWorkerDataException(ValidationError.NAME_REQUIRED);
+        }
+        if (sex == null) {
+            throw new InvalidWorkerDataException(ValidationError.SEX_REQUIRED);
+        }
+        birthdate(id);
         this.id = id;
         this.name = name;
         this.sex = sex;
-        this.address = address;
+        this.address = address == null ? "" : address;
     }
 
     private static LocalDate birthdate(String id) {
@@ -74,9 +83,7 @@ public abstract sealed class Worker implements Serializable permits Laborer, Tec
         return address;
     }
 
-    public Category getCategory() {
-        return category;
-    }
+    public abstract Category getCategory();
 
     public double getAverage() {
         return evaluations.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
