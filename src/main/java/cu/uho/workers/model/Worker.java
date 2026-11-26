@@ -1,5 +1,9 @@
 package cu.uho.workers.model;
 
-public sealed abstract class Worker permits Laborer, Technician, Manager {
-    
+import java.io.Serializable;
+
+// @formatter:off
+public abstract sealed class Worker implements Serializable permits Laborer, Technician, Manager {
+// @formatter:on
+
 }

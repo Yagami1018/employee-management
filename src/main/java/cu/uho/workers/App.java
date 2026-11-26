@@ -10,15 +10,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        var scene = new Scene(MainController.createView(new WorkerService()));
-        stage.setScene(scene);
-        stage.setTitle(I18n.get("app.title"));
-        stage.show();
-    }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	@Override
+	public void start(Stage stage) throws IOException {
+		var scene = new Scene(MainController.createView(new WorkerService()));
+		stage.setScene(scene);
+		stage.setTitle(I18n.get("app.title"));
+		stage.show();
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 }

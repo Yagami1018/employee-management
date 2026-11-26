@@ -4,4 +4,5 @@ target/
 .classpath
 .project
 nb-configuration.xml
+nbactions.xml
 dependency-reduced-pom.xml

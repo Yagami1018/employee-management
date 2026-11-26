@@ -12,38 +12,40 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableView;
 
 public class MainController {
-    private final WorkerService service;
-    @FXML private TableView<Worker> workerTV;
 
-    private MainController(WorkerService service) {
-        this.service = service;
-    }
+	private final WorkerService service;
+	@FXML private TableView<Worker> workerTV;
 
-    public static Parent createView(WorkerService service) throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainController.class.getResource("/cu/uho/workers/view/main-view.fxml"),
-                I18n.getBundle());
-        loader.setControllerFactory(_ -> new MainController(service));
-        return loader.load();
-    }
+	private MainController(WorkerService service) {
+		this.service = service;
+	}
 
-    @FXML
-    private void onEnglish() {
-        if (ControllerHelper.switchLanguage(I18n.ENGLISH)) {
-            ControllerHelper.restartWindow(service, workerTV);
-        }
-    }
+	public static Parent createView(WorkerService service) throws IOException {
+		FXMLLoader loader = new FXMLLoader(MainController.class.getResource("/cu/uho/workers/view/main-view.fxml"),
+				I18n.getBundle());
+		loader.setControllerFactory(_ -> new MainController(service));
+		return loader.load();
+	}
 
-    @FXML
-    private void onSpanish() {
-        if (ControllerHelper.switchLanguage(I18n.SPANISH)) {
-            ControllerHelper.restartWindow(service, workerTV);
-        }
-    }
+	@FXML
+	private void onEnglish() {
+		if (ControllerHelper.switchLanguage(I18n.ENGLISH)) {
+			ControllerHelper.restartWindow(service, workerTV);
+		}
+	}
 
-    @FXML
-    private void onClose() {
-        if (ControllerHelper.Dialogs.confirm(I18n.get("confirm.close"))) {
-            Platform.exit();
-        }
-    }
+	@FXML
+	private void onSpanish() {
+		if (ControllerHelper.switchLanguage(I18n.SPANISH)) {
+			ControllerHelper.restartWindow(service, workerTV);
+		}
+	}
+
+	@FXML
+	private void onClose() {
+		if (ControllerHelper.Dialogs.confirm(I18n.get("confirm.close"))) {
+			Platform.exit();
+		}
+	}
+
 }
