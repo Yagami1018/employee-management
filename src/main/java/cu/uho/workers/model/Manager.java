@@ -5,4 +5,8 @@ package cu.uho.workers.model;
  */
 public final class Manager extends Worker {
 
+    public Manager(String id, String name, Sex sex, String address) {
+        super(id, name, sex, address);
+    }
+
 }

@@ -5,15 +5,19 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * Worker
+ */
 public abstract sealed class Worker implements Serializable permits Laborer, Technician, Manager {
 
     private static final long serialVersionUID = 0L;
     private String id;
     private String name;
     private Sex sex;
-    private int age;
     private String address;
     private Category category;
     private final List<Double> evaluations = new ArrayList<>();
@@ -39,8 +43,60 @@ public abstract sealed class Worker implements Serializable permits Laborer, Tec
         }
     }
 
+    public void addEvaluation(double evaluation) {
+        if (evaluation < 0) {
+            throw new InvalidWorkerDataException(ValidationError.NEGATIVE_EVALUATION);
+        }
+        evaluations.add(evaluation);
+    }
+
+    public List<Double> getEvaluations() {
+        return Collections.unmodifiableList(evaluations);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public int getAge() {
         return Period.between(birthdate(id), LocalDate.now()).getYears();
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public double getAverage() {
+        return evaluations.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Worker other = (Worker) obj;
+        return Objects.equals(this.id, other.id);
     }
 
 }
