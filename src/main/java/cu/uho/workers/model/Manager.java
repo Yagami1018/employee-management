@@ -1,5 +1,10 @@
 package cu.uho.workers.model;
 
+import cu.uho.workers.model.enums.Category;
+import cu.uho.workers.model.enums.Sex;
+import cu.uho.workers.model.enums.ValidationError;
+import cu.uho.workers.model.errors.InvalidWorkerDataException;
+
 /**
  * Manager
  */
